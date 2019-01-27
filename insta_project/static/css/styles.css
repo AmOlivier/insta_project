@@ -1,0 +1,263 @@
+.insta-footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	display: block;
+	background-color: #f5f6fa;
+}
+
+#new-post {
+	position: relative;
+	left: 17%;
+	top: 6%;
+}
+
+#discover-btn {
+	position: relative;
+	left: 2.7%;
+	top: 6%;
+}
+.nav-color {
+	background-color: #f5f6fa;
+}
+
+.nav-text {
+	color: #718093 !important;
+	font-size: 20px;
+}
+
+.btn-danger {
+	background-color: black !important;
+}
+
+.log-sign-button {
+	/*To put the buttons to the right part of the screen*/
+	position: relative;
+	left: 0%;
+	
+}
+
+.prev-next-button {
+	margin-left: 35px;
+}
+
+.inset {
+	width: 55px;
+	top : 6px;
+	height: 55px;
+	border-radius: 50%;
+	box-shadow:
+		inset 0 0 0 2px rgba(255,255,255,0.6), 
+		0 1px 1px rgba(0,0,0,0.1);
+	background-color: transparent !important;
+	z-index: 999;
+}
+
+.inset img {
+	border-radius: inherit;
+	width: inherit;
+	height: inherit;
+	display: block;
+	position: relative;
+	z-index: 998;
+}
+
+.border-card{
+	border: #b2bec3 0.5px solid;
+}
+
+.shadow {
+
+	width: 85%;
+	clear:right;
+
+}
+
+.shadow-none {
+	width: 95%;
+}
+
+
+.cool {
+	margin:10px;
+}
+
+.log-sign-button a{
+	margin-left: 5px;
+}
+
+.nav-username {
+	margin-left: 6px;
+	width: 80px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.feed-username {
+	margin-left: 6px;
+	width: 200px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.nav-login-pic {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.nav-login-bloc {
+	right: -100%;
+
+}
+
+.nav-login-bloc a:hover {
+	text-decoration: none;
+}
+
+.social-logos {
+	height: 40px;
+	margin: 0 5px;
+	margin-bottom: 10px;
+	padding-top: 7px;
+}
+
+.contact-link {
+	color: #718093;
+	bottom: 0;
+}
+
+.contact-link:hover {
+	text-decoration: none;
+}
+
+.contact-link-text {
+	line-height: 50px;
+}
+
+.single_edit_form {
+    float: left;
+    width: 40%;
+    margin: 2% 5%;
+    padding: 1%;
+    border-style: inset;
+    border-width: 1px;
+    border-color: grey;
+}
+
+/* Clear floats after the columns */
+.edit_forms:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.form_username_exists p {
+	display: table-cell;
+	border-style: solid;
+	border-color: red;
+	border-width: 1px;
+	padding: 5px;
+}
+
+#birth  {
+	margin-left: 8.54%;
+}
+
+
+#id_bio.textinput.textInput.form-control {
+	height: 100px;
+	width: 100%;
+	
+}
+
+.comment {
+
+	margin-left: 10%;
+	width: 90%;
+}
+
+.comment-button {
+
+	position: relative;
+	bottom: 30px;
+
+}
+
+#rcorners1 {
+  border-radius: 100px;
+  background: #dfe4ea !important; 
+  
+  min-width: 100px;
+}
+
+.profile-page-pic {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	border: 4px groove black;
+	box-shadow: 10px 10px 20px grey;
+}
+
+.profile-page {
+	border-radius: 20%;
+	height: 35px;
+	width: 20px;
+}
+
+.big-card {
+	margin-bottom: 8.5% ;
+}
+
+#show-comments {
+	color: #007bff;
+}
+
+.logo-insta {
+	position: relative;
+	left: 40%;
+}
+
+.logo-insta-dimension {
+	width: 170px;
+	height: 70px;
+}
+
+#login-block {
+	margin-top: 37%;
+}
+
+.discover-pic {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+.feed-pic {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+
+
+#discover-post-pic {
+	border: solid 2px;
+	width: 275px;
+	height: 275px;
+}
+
+#button-follow {
+	height: 40px;
+	margin-top: 5px;	
+}
+
+#button-unfollow {
+	height: 40px;
+	margin-top: 5px;	
+}
+
+#feed-post-pic {
+	border: solid 2px;
+	width: 100%;
+	height: 600px;
+}

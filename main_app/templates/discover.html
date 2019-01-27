@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block header_title %} Discover {% endblock %}
+
+
+{% block content %}
+<div class="container col-11">
+<div class="row">
+{% for user_data in informations_of_users %}
+
+
+	<div class="card ml-2 mt-2" style="width: 18rem;">
+		<div class="card-body p-1">
+			<div class="row">
+				<div class="col-2"> 
+					{% if user_data.user_profile.profile_pic %}
+						<img class="discover-pic" src="{{user_data.user_profile.profile_pic.url}}">
+					{% else %}
+						<img class="discover-pic" src="{% static 'images/no-picture.png' %}">
+					{% endif %}
+				</div>
+				<p class="nav-username mt-2 mr-0">{{user_data.user_profile.user.username}}</p>
+				{% if user_data.in_follows %}
+					<a href="{% url 'profile_app:unfollow_user' user_data.user_profile.user.username %}" id='button-unfollow' class="  offset-sm-2 btn btn-primary" role="button" aria-pressed="true">Unfollow</a>
+				{% else %}
+					<a href="{% url 'profile_app:follow_user' user_data.user_profile.user.username%}" id='button-follow' class="  offset-sm-3 btn btn-primary" role="button" aria-pressed="true">Follow</a>
+				{% endif %}
+
+			</div>
+		
+	  <img id='discover-post-pic' class="card-img-top mt-2" src="{{user_data.last_post.picture.url}}" alt="Card image cap">
+	  <p class="card-text p-1" style="font-size: 15px;">{{user_data.last_post.description}}</p>
+	  </div>
+	</div>
+
+
+
+{% endfor %}
+</div>
+</div>
+{% endblock %}

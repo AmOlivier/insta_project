@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div id="comment-box" class="col-sm-12 offsets-sm-2">
+			<form enctype="multipart/form-data" method='POST'>
+			{% csrf_token %}
+			<div class="row">
+				<div class="col-8 mt-1">
+					{{ comment_form.text |as_crispy_field }}
+				</div>
+				<div class="col-3 p-3 mt-4">
+					<button type="submit" id="btn-log" class="btn btn-dark"> Post </button>
+				</div>
+			</div>
+		</form>
+</div>
+{% endblock %}

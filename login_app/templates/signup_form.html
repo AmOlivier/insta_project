@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block header_title %} Signup Form {% endblock %}
+
+{% block content %}
+
+
+{% if registered %}
+	<h1> Thanks for registering! </h1>
+{% else %}
+	<h1> Fill the signup form : </h1>
+	<form enctype='multipart/form-data' method="POST">
+		{% csrf_token %}
+		{{user_form.as_p}}
+		{{profile_form.as_p}}
+		<input type="submit" value="signup">
+	</form>
+{% endif %}
+
+{% endblock %}

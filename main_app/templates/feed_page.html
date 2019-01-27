@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block header_title %} Feed Page {% endblock %}
+{% block content %}
+
+<div class="container col-11">
+	{% for post in feed_posts %}
+	<div class="container col-12 mt-5 mb-5">
+		<div class="row mt-3">
+			{% if post.user_info.profile_pic %}
+			<a href="{% url 'profile_app:profile_page' post.user_info.id %}">
+				<img class="feed-pic" src="{{post.user_info.profile_pic.url}}">
+			</a>
+			{% else %}
+			<a href="{% url 'profile_app:profile_page' post.user_info.id %}">
+				<img class="feed-pic" src="{% static 'images/no-picture.png' %}">
+			</a>
+			{% endif %}
+			<h4 class="feed-username mt-3 mr-0">{{post.user_info.user.username}}</h4>
+		</div>
+		<div class="row">
+			<img id='feed-post-pic' class="card-img-top mt-2" src="{{post.picture.url}}" alt="Card image cap">
+		</div>
+		<div class="row">
+			<p class="card-text p-1 ml-3" style="font-size: 25px;">{{post.description}}</p>
+		</div>
+		<div class="col-3 p-3 mt-4">
+			{% if profile_connected_user in post.liked_by.all %}
+			<a href="{% url 'profile_app:dislike_post' post.id %}"><button id="btn-log" class="btn btn-dark"> DisLike </button></a>
+			{% else %}
+			<a href="{% url 'profile_app:like_post' post.id %}"><button id="btn-log" class="btn btn-dark"> Like </button></a>
+			{% endif %}
+			<a href="{% url 'main_app:write_comment' post.id %}"><button id="btn-log" class="btn btn-dark"> Comment </button></a>
+			{% for comment in post.comment.all %}
+			<p>{{ comment.user_info.user.username }} || {{ comment.text }}</p>
+			{% endfor %}
+		</div>
+	</div>
+
+
+	{% endfor %}
+
+</div>
+
+
+{% endblock %}

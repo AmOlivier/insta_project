@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Login Page{% endblock %}
+{% load crispy_forms_tags %}
+
+
+{% block content%}
+
+    {% if errors %}
+        <p>The username and password are not matching Biatchhhh.</p>
+    {% endif %}
+    <div id="login-block" class="container ">
+        <h2 class="offset-sm-5">Login</h2>
+        <form enctype="multipart/form-data" method='POST'>
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-5 ">
+                    {{ login_form.username |as_crispy_field }}
+                </div>
+                <div class="col-5 offset-sm-2">
+                    {{ login_form.password |as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row p-4">
+                <button id="btn-log" type="submit" class="col-3 offset-sm-4 btn btn-dark" classtype="submit" value='signup'>Log In</button>
+            </div>
+
+        </form>
+
+        <div class="row">
+            <p class="col-6 offset-sm-4 p-3">Or <a href="{% url 'login_app:signup'%}">Create an Account</a></p>
+        </div>
+    </div>
+
+{%endblock%}
+
+{% block footer %}
+{% endblock %}```
+

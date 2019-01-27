@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+
+<h1>Edit Profile for {{ profile_connected_user.user.username }}</h1>
+
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {{ user_edit_form.as_p }}
+    {{ profile_edit_form.as_p }}
+
+    <input type="submit" name="submit" value="Update">
+</form>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

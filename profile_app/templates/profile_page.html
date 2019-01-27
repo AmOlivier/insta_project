@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+{% block title %}Profile Page{% endblock%}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10">
+            <h3> Profile Page of {{user_profile.user.username}}</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body big-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            {% if not user_profile.profile_pic %}
+                            <img src="{% static 'images/no-picture.png' %}" class="profile-page-pic mt-3">
+                            {% else %}
+                            <img src="{{user_profile.profile_pic.url}}" class="profile-page-pic mt-3">
+                            {% endif %}
+                        </div>
+
+                        <div class="col-8 ">
+                            <h3 class="card-title">{{user_profile.user.username}}</h3>
+                            <p class="card-text offset-sm-2">BIO : {{user_profile.bio}}</p>
+
+                            <div class="col-5 links p-0 mt-5">
+                                <a href="{{user_profile.facebook_link }}" class="card-link"><img src="{% static 'images/logo_facebook.png' %}"
+                                        class="social-logos"></a>
+                            </div>
+                            {% if check_own_profile %}
+                            <a href=" {% url 'profile_app:edit_profile' %}">
+                                <button class="btn btn-success edit-profile"> Edit Profile </button>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for post in user_profile.posts.all %}
+            <div class="container col-12 mt-5">
+                <div class="row">
+                    <img id='feed-post-pic' class="card-img-top mt-2" src="{{post.picture.url}}" alt="Card image cap">
+                </div>
+                <div class="row">
+                    <p class="card-text p-1 ml-3" style="font-size: 25px;">{{post.description}}</p>
+                </div>
+                <div class="col-3 p-3 mt-4">
+                    {% if profile_connected_user in post.liked_by.all %}
+                    <a href="{% url 'profile_app:dislike_post' post.id %}"><button id="btn-log" class="btn btn-dark">
+                            DisLike </button></a>
+                    {% else %}
+                    <a href="{% url 'profile_app:like_post' post.id %}"><button id="btn-log" class="btn btn-dark"> Like
+                        </button></a>
+                    {% endif %}
+                    <a href="{% url 'main_app:write_comment' post.id %}"><button id="btn-log" class="btn btn-dark">
+                            Comment </button></a>
+                    {% for comment in post.comment.all %}
+                    <p>{{ comment.user_info.user.username }} || {{ comment.text }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+
+{% endblock %}

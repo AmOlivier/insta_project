@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+	<title>{%block title %}Title{% endblock %}</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light nav-color">
+		<a class="navbar-brand logo-insta" href="{% url 'main_app:feed_page' %}">
+			<img class="logo-insta-dimension" src="{% static 'images/logo_insta.png'%}">
+		</a>
+
+
+		<ul class="navbar-nav mr-auto ">
+
+			{% if logged_in %}
+		</ul>
+
+		<div class="nav-login-bloc">
+			<a href="">
+				{% if not profile_connected_user.profile_pic %}
+				<a href="{% url 'profile_app:profile_page' profile_connected_user.id %}">
+					<img src="{% static 'images/no-picture.png' %}" class="nav-login-pic">
+				</a>
+				{% else %}
+				<a href="{% url 'profile_app:profile_page' profile_connected_user.id %}">
+					<img src="{{profile_connected_user.profile_pic.url}}" class="nav-login-pic">
+				</a>
+				{% endif %}
+				<span class="nav-username">{{user.username}}</span>
+			</a>
+			<a href="{% url 'login_app:logging_out'%}" class="btn btn-secondary btn-lg" role="button" aria-pressed="true">Logout</a>
+		</div>
+
+		{% else %}
+		</ul>
+
+		<div class="log-sign-button">
+			<a href="{% url 'login_app:loginpage'%}" class="btn btn-secondary btn-lg" role="button" aria-pressed="true">Login</a>
+			<a href="{% url 'login_app:signup'%}" class="btn btn-secondary btn-lg" role="button" aria-pressed="true">Signup</a>
+		</div>
+
+		{% endif %}
+
+
+	</nav>
+
+	{% block content %}{% endblock %}
+
+	{% block footer %}
+	<footer class="insta-footer">
+		<a id="discover-btn" href=" {% url 'main_app:discover' %}">
+			<button id="discover-btn" class="btn btn-success edit-profile"> Discover </button>
+		</a>
+		<a id="new-post" href=" {% url 'profile_app:write_new_post' %}">
+			<button id="new-post" class="btn btn-success edit-profile"> New Post </button>
+		</a>
+	</footer>
+	{% endblock %}
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	 crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	 crossorigin="anonymous"></script>
+
+</body>
+
+</html>
